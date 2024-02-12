@@ -49,7 +49,7 @@ const cardTwo = `<li class="card">
     src=${imageCardTwo}
     alt="siames-cat"
   />
-  <h3 class="card_title">${nameCardTwo.toUpperCase()}</h3>
+  <h3 class="card_title">${nameCardTwo}</h3>
   <h4 class="card_race">${raceCardTwo}</h4>
   <p class="card_description">
     ${descriptionCardTwo}
@@ -64,7 +64,7 @@ const cardThree = `<li class="card">
     src=${imageCardThree}
     alt="siames-cat"
   />
-  <h3 class="card_title">${nameCardThree.toUpperCase()}</h3>
+  <h3 class="card_title">${nameCardThree}</h3>
   <h4 class="card_race">${raceCardThree}</h4>
   <p class="card_description">
     ${descriptionCardThree}
