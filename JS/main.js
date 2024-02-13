@@ -40,7 +40,7 @@ const cardOne = `<li class="card">
   </p>
 </article>
 </li>`;
-console.log(nameCardOne);
+
 
 const cardTwo = `<li class="card">
 <article>
@@ -73,3 +73,23 @@ const cardThree = `<li class="card">
 </li>`;
 
 list.innerHTML = cardOne + cardTwo + cardThree;
+
+const inputDescription = document.querySelector('.js_in_search_desc');
+const descriptionText = inputDescription.value;
+const cards = document.querySelector('.card');
+
+if(descriptionCardOne.includes(descriptionText) ) {
+  cardOne;
+
+
+  }
+  
+  if(descriptionCardTwo.includes(descriptionText) ) {
+    cards.classList.add('hidden');
+
+  }
+  
+  if(descriptionCardThree.includes(descriptionText) ) {
+    cards.classList.add('hidden');
+
+  }
