@@ -26,7 +26,7 @@ bella mirada se ha convertido en una de sus señas de identidad.
 Sus ojos son grandes y las orejas resultan largas y en punta.`;
 const raceCardThree = 'Maine Coon';
 
-const cardOne = `<li class="card">
+const cardOne = `<li class="card js-card-1">
 <article>
   <img
     class="card_img"
@@ -42,7 +42,7 @@ const cardOne = `<li class="card">
 </li>`;
 
 
-const cardTwo = `<li class="card">
+const cardTwo = `<li class="card js-card-2">
 <article>
   <img
     class="card_img"
@@ -57,7 +57,7 @@ const cardTwo = `<li class="card">
 </article>
 </li>`;
 
-const cardThree = `<li class="card">
+const cardThree = `<li class="card js-card-3">
 <article>
   <img
     class="card_img"
@@ -76,20 +76,23 @@ list.innerHTML = cardOne + cardTwo + cardThree;
 
 const inputDescription = document.querySelector('.js_in_search_desc');
 const descriptionText = inputDescription.value;
-const cards = document.querySelector('.card');
+const card1 = document.querySelector('.js-card-1');
+const card2 = document.querySelector('.js-card-2');
+const card3 = document.querySelector('.js-card-3');
+
 
 if(descriptionCardOne.includes(descriptionText) ) {
-  cardOne;
-
-
+ 
+  }else {
+    card1.classList.add('hidden');
   }
   
   if(descriptionCardTwo.includes(descriptionText) ) {
-    cards.classList.add('hidden');
-
+  }else {
+    card1.classList.add('hidden');
   }
   
   if(descriptionCardThree.includes(descriptionText) ) {
-    cards.classList.add('hidden');
-
+  }else {
+    card1.classList.add('hidden');
   }
