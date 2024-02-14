@@ -96,3 +96,5 @@ if(descriptionCardOne.includes(descriptionText) ) {
   }else {
     card1.classList.add('hidden');
   }
+
+ 
