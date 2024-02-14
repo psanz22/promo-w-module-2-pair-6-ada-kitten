@@ -41,7 +41,6 @@ const cardOne = `<li class="card js-card-1">
 </article>
 </li>`;
 
-
 const cardTwo = `<li class="card js-card-2">
 <article>
   <img
@@ -80,19 +79,54 @@ const card1 = document.querySelector('.js-card-1');
 const card2 = document.querySelector('.js-card-2');
 const card3 = document.querySelector('.js-card-3');
 
+// if (descriptionCardOne.includes(descriptionText)) {
+// } else {
+//   card1.classList.add('hidden');
+// }
 
-if(descriptionCardOne.includes(descriptionText) ) {
- 
-  }else {
-    card1.classList.add('hidden');
+// if (descriptionCardTwo.includes(descriptionText)) {
+// } else {
+//   card1.classList.add('hidden');
+// }
+
+// if (descriptionCardThree.includes(descriptionText)) {
+// } else {
+//   card1.classList.add('hidden');
+// }
+
+if (descriptionCardOne.includes(descriptionText)) {
+  card2.classList.add('hidden');
+  card3.classList.add('hidden');
+} else if (descriptionCardTwo.includes(descriptionText)) {
+  card1.classList.add('hidden');
+  card3.classList.add('hidden');
+} else if (descriptionCardThree.includes(descriptionText)) {
+  card1.classList.add('hidden');
+  card2.classList.add('hidden');
+} else {
+  console.log('Lo sentimos, ningún gato cumple con esos criterios');
+}
+
+const buttonAdd = document.querySelector('.js-btn-add');
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMessageError = document.querySelector('.js-label-error');
+
+buttonAdd.addEventListener('click', () => {
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+    labelMessageError.innerHTML = 'Uy, parece que has olvidado algo!';
+  } else {
   }
-  
-  if(descriptionCardTwo.includes(descriptionText) ) {
-  }else {
-    card1.classList.add('hidden');
-  }
-  
-  if(descriptionCardThree.includes(descriptionText) ) {
-  }else {
-    card1.classList.add('hidden');
-  }
+});
+
+const buttonCancel = document.querySelector('.js-button-cancel');
+const form = document.querySelector('.js-form');
+
+buttonCancel.addEventListener('click', () => {
+  form.classList.toggle('hidden');
+});
