@@ -144,7 +144,6 @@ function handleClickNewCatForm(event) {
   event.preventDefault();
   if (form.classList.contains('collapsed')) {
     showNewCatForm(form);
-
   } else {
     hideNewCatForm(form);
   }
@@ -156,16 +155,13 @@ const inputNameCat = document.querySelector('.js-input-name');
 const inputRace = document.querySelector('.js-race');
 const inputDescr = document.querySelector('.js-input-desc');
 
-
-
 function addNewKitten(event) {
- 
   event.preventDefault();
-const inputImageValue = inputImage.value;
-const inputNameValue = inputNameCat.value;
-const inputRaceValue = inputRace.value;
-const inputDescrValue = inputDescr.value;
-const cardFour =  `<li class="card js-card-3">
+  const inputImageValue = inputImage.value;
+  const inputNameValue = inputNameCat.value;
+  const inputRaceValue = inputRace.value;
+  const inputDescrValue = inputDescr.value;
+  const cardFour = `<li class="card js-card-3">
 <article>
   <img
     class="card_img"
@@ -179,10 +175,7 @@ const cardFour =  `<li class="card js-card-3">
   </p>
 </article>
 </li>`;
-list.innerHTML = cardFour;
-
-
-
+  list.innerHTML = list.innerHTML + cardFour;
 }
 //modifica el evento para cumplir una función manejadora
 buttonAdd.addEventListener('click', addNewKitten);
