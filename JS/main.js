@@ -126,7 +126,63 @@ buttonAdd.addEventListener('click', () => {
 
 const buttonCancel = document.querySelector('.js-button-cancel');
 const form = document.querySelector('.js-form');
+const buttonPlus = document.querySelector('.js-button-plus');
 
-buttonCancel.addEventListener('click', () => {
-  form.classList.toggle('hidden');
+buttonCancel.addEventListener('click', (event) => {
+  event.preventDefault();
+  form.classList.add('collapsed');
 });
+
+function showNewCatForm() {
+  form.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  form.classList.add('collapsed');
+}
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (form.classList.contains('collapsed')) {
+    showNewCatForm(form);
+
+  } else {
+    hideNewCatForm(form);
+  }
+}
+
+buttonPlus.addEventListener('click', handleClickNewCatForm);
+const inputImage = document.querySelector('.js-input-photo');
+const inputNameCat = document.querySelector('.js-input-name');
+const inputRace = document.querySelector('.js-race');
+const inputDescr = document.querySelector('.js-input-desc');
+
+
+
+function addNewKitten(event) {
+ 
+  event.preventDefault();
+const inputImageValue = inputImage.value;
+const inputNameValue = inputNameCat.value;
+const inputRaceValue = inputRace.value;
+const inputDescrValue = inputDescr.value;
+const cardFour =  `<li class="card js-card-3">
+<article>
+  <img
+    class="card_img"
+    src=${inputImageValue}
+    alt="siames-cat"
+  />
+  <h3 class="card_title">${inputNameValue}</h3>
+  <h4 class="card_race">${inputRaceValue}</h4>
+  <p class="card_description">
+    ${inputDescrValue}
+  </p>
+</article>
+</li>`;
+list.innerHTML = cardFour;
+
+
+
+}
+//modifica el evento para cumplir una función manejadora
+buttonAdd.addEventListener('click', addNewKitten);
