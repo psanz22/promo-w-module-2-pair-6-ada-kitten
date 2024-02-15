@@ -37,21 +37,17 @@
     </header>
 
     <main>
-      <section class="new-form collapsed">
+      <section class="new-form js-form">
         <h2 class="title">¿Agregamos un nuevo gatito a Adalab?</h2>
         <form class="form">
-          <input
-            class="input"
-            type="text"
-            placeholder="Url de la foto"
-            required
-          />
-          <input class="input" type="text" placeholder="Nombre" required />
+          <input class="input js-input-photo" type="text" placeholder="Url de la foto" required />
+          <input class="input js-input-name" type="text" placeholder="Nombre" required />
           <input class="input" type="text" placeholder="Raza" />
-          <input class="input" type="text" placeholder="Descripción" required />
+          <input class="input js-input-desc" type="text" placeholder="Descripción" required />
           <label class=""></label>
-          <button class="button">Añadir</button>
-          <button class="button-cancel">Cancelar</button>
+          <button class="button js-btn-add">Añadir</button>
+          <button class="button-cancel js-button-cancel">Cancelar</button>
+          <p class="js-label-error"></p>
         </form>
       </section>
 
@@ -63,23 +59,20 @@
       <section class="search">
         <h2 class="title">Filtrar / Buscar</h2>
         <form class="form">
-          <input type="text" placeholder="Descripción" class="input js_in_search_desc" value="elegante" />
           <input
-            class="input"
-            type="select"
-            name="raza"
-            placeholder="Raza"
-            id="raza"
+            class="input js_in_search_desc"
+            type="text"
+            placeholder="Descripción"
+            value="nulo"
           />
+          <input class="input" type="select" name="raza" placeholder="Raza" id="raza" />
 
           <button class="button">Buscar</button>
         </form>
       </section>
 
       <section class="data">
-        <ul class="list js-list">
-       
-        </ul>
+        <ul class="list js-list"></ul>
       </section>
     </main>
     <footer class="footer">
