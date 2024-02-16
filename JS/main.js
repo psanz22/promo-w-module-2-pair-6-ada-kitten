@@ -79,20 +79,6 @@ const card1 = document.querySelector('.js-card-1');
 const card2 = document.querySelector('.js-card-2');
 const card3 = document.querySelector('.js-card-3');
 
-// if (descriptionCardOne.includes(descriptionText)) {
-// } else {
-//   card1.classList.add('hidden');
-// }
-
-// if (descriptionCardTwo.includes(descriptionText)) {
-// } else {
-//   card1.classList.add('hidden');
-// }
-
-// if (descriptionCardThree.includes(descriptionText)) {
-// } else {
-//   card1.classList.add('hidden');
-// }
 
 if (descriptionCardOne.includes(descriptionText)) {
   card2.classList.add('hidden');
@@ -104,7 +90,7 @@ if (descriptionCardOne.includes(descriptionText)) {
   card1.classList.add('hidden');
   card2.classList.add('hidden');
 } else {
-  console.log('Lo sentimos, ningún gato cumple con esos criterios');
+  //console.log('Lo sentimos, ningún gato cumple con esos criterios');
 }
 
 const buttonAdd = document.querySelector('.js-btn-add');
