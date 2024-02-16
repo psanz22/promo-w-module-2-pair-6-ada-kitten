@@ -79,19 +79,18 @@ const card1 = document.querySelector('.js-card-1');
 const card2 = document.querySelector('.js-card-2');
 const card3 = document.querySelector('.js-card-3');
 
-
-if (descriptionCardOne.includes(descriptionText)) {
-  card2.classList.add('hidden');
-  card3.classList.add('hidden');
-} else if (descriptionCardTwo.includes(descriptionText)) {
-  card1.classList.add('hidden');
-  card3.classList.add('hidden');
-} else if (descriptionCardThree.includes(descriptionText)) {
-  card1.classList.add('hidden');
-  card2.classList.add('hidden');
-} else {
-  //console.log('Lo sentimos, ningún gato cumple con esos criterios');
-}
+// if (descriptionCardOne.includes(descriptionText)) {
+//   card2.classList.add('hidden');
+//   card3.classList.add('hidden');
+// } else if (descriptionCardTwo.includes(descriptionText)) {
+//   card1.classList.add('hidden');
+//   card3.classList.add('hidden');
+// } else if (descriptionCardThree.includes(descriptionText)) {
+//   card1.classList.add('hidden');
+//   card2.classList.add('hidden');
+// } else {
+//   //console.log('Lo sentimos, ningún gato cumple con esos criterios');
+// }
 
 const buttonAdd = document.querySelector('.js-btn-add');
 const inputDesc = document.querySelector('.js-input-desc');
@@ -165,3 +164,33 @@ function addNewKitten(event) {
 }
 //modifica el evento para cumplir una función manejadora
 buttonAdd.addEventListener('click', addNewKitten);
+
+const filterKitten = (event) => {
+  event.preventDefault();
+  const input_search_desc = document.querySelector('.js_in_search_desc');
+  const descrSearchText = input_search_desc.value;
+  if (descriptionCardOne.includes(descrSearchText)) {
+    card2.classList.add('hidden');
+    card3.classList.add('hidden');
+    list.innerHTML = cardOne;
+  }
+  if (descriptionCardTwo.includes(descrSearchText)) {
+    card1.classList.add('hidden');
+    card3.classList.add('hidden');
+    list.innerHTML = cardTwo;
+  }
+  if (descriptionCardThree.includes(descrSearchText)) {
+    card1.classList.add('hidden');
+    card2.classList.add('hidden');
+    list.innerHTML = cardThree;
+  }
+  if (
+    descriptionCardOne.includes(descrSearchText) &&
+    descriptionCardTwo.includes(descrSearchText) &&
+    descriptionCardThree.includes(descrSearchText)
+  ) {
+    list.innerHTML = cardOne + cardTwo + cardThree;
+  }
+};
+const buttonSearch = document.querySelector('.js-button-search');
+buttonSearch.addEventListener('click', filterKitten);
