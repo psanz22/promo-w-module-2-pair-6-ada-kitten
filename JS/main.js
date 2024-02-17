@@ -1,5 +1,7 @@
 'use strict';
 
+//EJERCICIO 1 y 2: MOSTRAR LAS CARTAS DE LOS GATOS DESDE EL FICHERO JS:
+
 const list = document.querySelector('.js-list');
 
 //Card one
@@ -73,6 +75,9 @@ const cardThree = `<li class="card js-card-3">
 
 list.innerHTML = cardOne + cardTwo + cardThree;
 
+// EJERCICIO 3: ESTABLECER FILTROS EN EL BUSCADOR DE GATOS MANIPULANDO
+//EL VALUE DEL INPUT DESCRIPCIÓN A MANO (NO SABÍAMOS EVENTOS TODAVÍA)
+
 const inputDescription = document.querySelector('.js_in_search_desc');
 const descriptionText = inputDescription.value;
 const card1 = document.querySelector('.js-card-1');
@@ -92,6 +97,9 @@ const card3 = document.querySelector('.js-card-3');
 //   //console.log('Lo sentimos, ningún gato cumple con esos criterios');
 // }
 
+//EJERCICIO 4:AÑADIR GATOS DESDE EL FORMULARIO Y DEVOLVER MENSAJE DE ERROR SI
+//FALTA ALGUN CAMPO
+
 const buttonAdd = document.querySelector('.js-btn-add');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
@@ -108,6 +116,9 @@ buttonAdd.addEventListener('click', () => {
   } else {
   }
 });
+
+//EJERCICIO 5: CERRAR EL FORMULARIO DE AÑADIR GATOS CON EL BOTÓN CANCELAR
+//EJERCICIO 6: ABRIR Y CERRAR EL FORMULARIO DE AÑADIR GATOS CON EL BOTÓN +
 
 const buttonCancel = document.querySelector('.js-button-cancel');
 const form = document.querySelector('.js-form');
@@ -135,6 +146,10 @@ function handleClickNewCatForm(event) {
 }
 
 buttonPlus.addEventListener('click', handleClickNewCatForm);
+
+//EJERCICIO 6:AÑADIR UN NUEVO GATO RELLENANDO EL FORMULARIO Y HACIENDO
+//  CLICK EN EL BOTÓN AÑADIR DEL FORMULARIO
+
 const inputImage = document.querySelector('.js-input-photo');
 const inputNameCat = document.querySelector('.js-input-name');
 const inputRace = document.querySelector('.js-race');
@@ -162,8 +177,11 @@ function addNewKitten(event) {
 </li>`;
   list.innerHTML = list.innerHTML + cardFour;
 }
-//modifica el evento para cumplir una función manejadora
+
 buttonAdd.addEventListener('click', addNewKitten);
+
+//EJERCICIO 7: ESTABLECER FILTROS EN EL BUSCADOR DE GATOS (INPUT DESCRIPCION)
+//CON FUNCIONES Y EVENTOS
 
 const filterKitten = (event) => {
   event.preventDefault();
