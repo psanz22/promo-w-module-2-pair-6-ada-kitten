@@ -28,52 +28,71 @@ bella mirada se ha convertido en una de sus señas de identidad.
 Sus ojos son grandes y las orejas resultan largas y en punta.`;
 const raceCardThree = 'Maine Coon';
 
-const cardOne = `<li class="card js-card-1">
-<article>
-  <img
-    class="card_img"
-    src=${imageCardOne}
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${nameCardOne}</h3>
-  <h4 class="card_race">${raceCardOne}</h4>
-  <p class="card_description">
-    ${descriptionCardOne}
-  </p>
-</article>
-</li>`;
+// const cardOne = `<li class="card js-card-1">
+// <article>
+//   <img
+//     class="card_img"
+//     src=${imageCardOne}
+//     alt="siames-cat"
+//   />
+//   <h3 class="card_title">${nameCardOne}</h3>
+//   <h4 class="card_race">${raceCardOne}</h4>
+//   <p class="card_description">
+//     ${descriptionCardOne}
+//   </p>
+// </article>
+// </li>`;
 
-const cardTwo = `<li class="card js-card-2">
-<article>
-  <img
-    class="card_img"
-    src=${imageCardTwo}
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${nameCardTwo}</h3>
-  <h4 class="card_race">${raceCardTwo}</h4>
-  <p class="card_description">
-    ${descriptionCardTwo}
-  </p>
-</article>
-</li>`;
+// const cardTwo = `<li class="card js-card-2">
+// <article>
+//   <img
+//     class="card_img"
+//     src=${imageCardTwo}
+//     alt="siames-cat"
+//   />
+//   <h3 class="card_title">${nameCardTwo}</h3>
+//   <h4 class="card_race">${raceCardTwo}</h4>
+//   <p class="card_description">
+//     ${descriptionCardTwo}
+//   </p>
+// </article>
+// </li>`;
 
-const cardThree = `<li class="card js-card-3">
-<article>
-  <img
-    class="card_img"
-    src=${imageCardThree}
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${nameCardThree}</h3>
-  <h4 class="card_race">${raceCardThree}</h4>
-  <p class="card_description">
-    ${descriptionCardThree}
-  </p>
-</article>
-</li>`;
+// const cardThree = `<li class="card js-card-3">
+// <article>
+//   <img
+//     class="card_img"
+//     src=${imageCardThree}
+//     alt="siames-cat"
+//   />
+//   <h3 class="card_title">${nameCardThree}</h3>
+//   <h4 class="card_race">${raceCardThree}</h4>
+//   <p class="card_description">
+//     ${descriptionCardThree}
+//   </p>
+// </article>
+// </li>`;
 
-list.innerHTML = cardOne + cardTwo + cardThree;
+// list.innerHTML = cardOne + cardTwo + cardThree;
+
+function renderKitten (object) {
+  const cardList =  `<li class="card js-card-3">
+  <article>
+    <img
+      class="card_img"
+      src= ${object.image}
+      alt="siames-cat"
+    />
+    <h3 class="card_title">${object.name}</h3>
+    <h4 class="card_race">${object.race}</h4>
+    <p class="card_description">
+      ${object.desc}
+    </p>
+  </article>
+  </li>`;
+ 
+return list.innerHTML += cardList;
+}
 
 // EJERCICIO 3: ESTABLECER FILTROS EN EL BUSCADOR DE GATOS MANIPULANDO
 //EL VALUE DEL INPUT DESCRIPCIÓN A MANO (NO SABÍAMOS EVENTOS TODAVÍA)
@@ -175,7 +194,7 @@ function addNewKitten(event) {
   </p>
 </article>
 </li>`;
-  list.innerHTML = list.innerHTML + cardFour;
+  list.innerHTML += cardFour;
 }
 
 buttonAdd.addEventListener('click', addNewKitten);
@@ -212,3 +231,36 @@ const filterKitten = (event) => {
 };
 const buttonSearch = document.querySelector('.js-button-search');
 buttonSearch.addEventListener('click', filterKitten);
+
+//EJERCICIO CONVERTIR CADA GATITO EN UN OBJETO
+
+const kittenDataOne = {
+  image: imageCardOne,
+  name: nameCardOne,
+  desc: descriptionCardOne,
+  race: raceCardOne
+}
+const kittenDataTwo = {
+  image: imageCardTwo,
+  name: nameCardTwo,
+  desc: descriptionCardTwo,
+  race: raceCardTwo
+}
+const kittenDataThree = {
+  image: imageCardThree,
+  name: nameCardThree,
+  desc: descriptionCardThree,
+  race: raceCardThree
+}
+const kittenDataFour = {
+  image: 'https://pics.craiyon.com/2023-07-03/2ea2ab5588c04c6785b0c35cb7a75eeb.webp',
+  name: 'LADY BALLANTINES',
+  desc: 'Es una gatita un poco alcohólica pero muy maja si te acercas a conocerla.',
+  race: 'Atigrada'
+}
+
+
+renderKitten(kittenDataOne);
+renderKitten(kittenDataTwo);
+renderKitten(kittenDataThree);
+renderKitten(kittenDataFour);
