@@ -77,56 +77,80 @@ const raceCardThree = 'Maine Coon';
 
 //EJERCICIO 9: CREAR UN ARRAY DE OBJETOS. PASARLE A LA FUNCIÓN RENDERKITTEN EL ARRAY COMO PARÁMETRO:
 
-const kittenDataList = [
-  {
-    image: imageCardOne,
-    name: nameCardOne,
-    desc: descriptionCardOne,
-    race: raceCardOne,
-  },
-  {
-    image: imageCardTwo,
-    name: nameCardTwo,
-    desc: descriptionCardTwo,
-    race: raceCardTwo,
-  },
-  {
-    image: imageCardThree,
-    name: nameCardThree,
-    desc: descriptionCardThree,
-    race: raceCardThree,
-  },
-  {
-    image: 'https://pics.craiyon.com/2023-07-03/2ea2ab5588c04c6785b0c35cb7a75eeb.webp',
-    name: 'LADY BALLANTINES',
-    desc: 'Es una gatita un poco alcohólica pero muy maja si te acercas a conocerla.',
-    race: 'Atigrada',
-  },
-];
 
-function renderKitten(object) {
-  const cardList = `<li class="card js-card-3">
-  <article>
-    <img
-      class="card_img"
-      src= ${object.image}
-      alt="siames-cat"
-    />
-    <h3 class="card_title">${object.name}</h3>
-    <h4 class="card_race">${object.race}</h4>
-    <p class="card_description">
-      ${object.desc}
-    </p>
-  </article>
-  </li>`;
-  return cardList;
+const kittenDataOne = {
+  image: imageCardOne,
+  name: nameCardOne,
+  desc: descriptionCardOne,
+  race: raceCardOne,
+};
+const kittenDataTwo = {
+  image: imageCardTwo,
+  name: nameCardTwo,
+  desc: descriptionCardTwo,
+  race: raceCardTwo,
+};
+const kittenDataThree = {
+  image: imageCardThree,
+  name: nameCardThree,
+  desc: descriptionCardThree,
+  race: raceCardThree,
+};
+const kittenDataFour = {
+  image: 'https://pics.craiyon.com/2023-07-03/2ea2ab5588c04c6785b0c35cb7a75eeb.webp',
+  name: 'LADY BALLANTINES',
+  desc: 'Es una gatita un poco alcohólica pero muy maja si te acercas a conocerla.',
+  race: 'Atigrada',
+};
+
+const kittenDataList = [kittenDataOne, kittenDataTwo, kittenDataThree, kittenDataFour];
+
+// AQUÍ CREAMOS LA FUNCIÓN CON BUCLES Y CON UN ARRAY DE OBJETOS
+
+function renderKittenList(kittenDataList) {
+    for(const kitten of kittenDataList){
+     list.innerHTML += `<li class="card js-card-3">
+   <article>
+     <img
+       class="card_img"
+       src= ${kitten.image}
+       alt="siames-cat"
+     />
+     <h3 class="card_title">${kitten.name}</h3>
+     <h4 class="card_race">${kitten.race}</h4>
+     <p class="card_description">
+       ${kitten.desc}
+     </p>
+   </article>
+   </li>`;
+      
+    }
 }
+renderKittenList(kittenDataList);
 
-list.innerHTML +=
-  renderKitten(kittenDataList[0]) +
-  renderKitten(kittenDataList[1]) +
-  renderKitten(kittenDataList[2]) +
-  renderKitten(kittenDataList[3]);
+// function renderKitten(object) {
+//   const cardList = `<li class="card js-card-3">
+//   <article>
+//     <img
+//       class="card_img"
+//       src= ${object.image}
+//       alt="siames-cat"
+//     />
+//     <h3 class="card_title">${object.name}</h3>
+//     <h4 class="card_race">${object.race}</h4>
+//     <p class="card_description">
+//       ${object.desc}
+//     </p>
+//   </article>
+//   </li>`;
+//   return cardList;
+// }
+
+// list.innerHTML +=
+//   renderKitten(kittenDataList[0]) +
+//   renderKitten(kittenDataList[1]) +
+//   renderKitten(kittenDataList[2]) +
+//   renderKitten(kittenDataList[3]);
 
 // EJERCICIO 3: ESTABLECER FILTROS EN EL BUSCADOR DE GATOS MANIPULANDO
 //EL VALUE DEL INPUT DESCRIPCIÓN A MANO (NO SABÍAMOS EVENTOS TODAVÍA)
@@ -149,6 +173,20 @@ const card3 = document.querySelector('.js-card-3');
 // } else {
 //   //console.log('Lo sentimos, ningún gato cumple con esos criterios');
 // }
+
+//AHORA VAMOS A ESTABLECER LOS MISMOS FILTROS PERO YA UTILIZANDO BUCLES
+function filterKitten(event) {
+  event.preventDefault();
+  list.innerHTML = '';
+  for (const kittenItem of kittenDataList){ 
+  if ( kittenItem.includes(descriptionText)) {
+    list.innerHTML += kittenItem;
+  }
+ 
+}
+}
+inputDescription.addEventListener('input', filterKitten);
+
 
 //EJERCICIO 4:AÑADIR GATOS DESDE EL FORMULARIO Y DEVOLVER MENSAJE DE ERROR SI
 //FALTA ALGUN CAMPO
@@ -236,62 +274,38 @@ buttonAdd.addEventListener('click', addNewKitten);
 //EJERCICIO 7: ESTABLECER FILTROS EN EL BUSCADOR DE GATOS (INPUT DESCRIPCION)
 //CON FUNCIONES Y EVENTOS
 
-const filterKitten = (event) => {
-  event.preventDefault();
-  const input_search_desc = document.querySelector('.js_in_search_desc');
-  const descrSearchText = input_search_desc.value;
-  if (descriptionCardOne.includes(descrSearchText)) {
-    card2.classList.add('hidden');
-    card3.classList.add('hidden');
-    list.innerHTML = cardOne;
-  }
-  if (descriptionCardTwo.includes(descrSearchText)) {
-    card1.classList.add('hidden');
-    card3.classList.add('hidden');
-    list.innerHTML = cardTwo;
-  }
-  if (descriptionCardThree.includes(descrSearchText)) {
-    card1.classList.add('hidden');
-    card2.classList.add('hidden');
-    list.innerHTML = cardThree;
-  }
-  if (
-    descriptionCardOne.includes(descrSearchText) &&
-    descriptionCardTwo.includes(descrSearchText) &&
-    descriptionCardThree.includes(descrSearchText)
-  ) {
-    list.innerHTML = cardOne + cardTwo + cardThree;
-  }
-};
-const buttonSearch = document.querySelector('.js-button-search');
-buttonSearch.addEventListener('click', filterKitten);
+// const filterKitten = (event) => {
+//   event.preventDefault();
+//   const input_search_desc = document.querySelector('.js_in_search_desc');
+//   const descrSearchText = input_search_desc.value;
+//   if (descriptionCardOne.includes(descrSearchText)) {
+//     card2.classList.add('hidden');
+//     card3.classList.add('hidden');
+//     list.innerHTML = cardOne;
+//   }
+//   if (descriptionCardTwo.includes(descrSearchText)) {
+//     card1.classList.add('hidden');
+//     card3.classList.add('hidden');
+//     list.innerHTML = cardTwo;
+//   }
+//   if (descriptionCardThree.includes(descrSearchText)) {
+//     card1.classList.add('hidden');
+//     card2.classList.add('hidden');
+//     list.innerHTML = cardThree;
+//   }
+//   if (
+//     descriptionCardOne.includes(descrSearchText) &&
+//     descriptionCardTwo.includes(descrSearchText) &&
+//     descriptionCardThree.includes(descrSearchText)
+//   ) {
+//     list.innerHTML = cardOne + cardTwo + cardThree;
+//   }
+// };
+// const buttonSearch = document.querySelector('.js-button-search');
+// buttonSearch.addEventListener('click', filterKitten);
 
 //EJERCICIO 8: CONVERTIR CADA GATITO EN UN OBJETO
 
-// const kittenDataOne = {
-//   image: imageCardOne,
-//   name: nameCardOne,
-//   desc: descriptionCardOne,
-//   race: raceCardOne,
-// };
-// const kittenDataTwo = {
-//   image: imageCardTwo,
-//   name: nameCardTwo,
-//   desc: descriptionCardTwo,
-//   race: raceCardTwo,
-// };
-// const kittenDataThree = {
-//   image: imageCardThree,
-//   name: nameCardThree,
-//   desc: descriptionCardThree,
-//   race: raceCardThree,
-// };
-// const kittenDataFour = {
-//   image: 'https://pics.craiyon.com/2023-07-03/2ea2ab5588c04c6785b0c35cb7a75eeb.webp',
-//   name: 'LADY BALLANTINES',
-//   desc: 'Es una gatita un poco alcohólica pero muy maja si te acercas a conocerla.',
-//   race: 'Atigrada',
-// };
 
 // renderKitten(kittenDataOne);
 // renderKitten(kittenDataTwo);
