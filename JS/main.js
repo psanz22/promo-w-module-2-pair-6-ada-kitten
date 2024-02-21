@@ -155,11 +155,10 @@ renderKittenList(kittenDataList);
 // EJERCICIO 3: ESTABLECER FILTROS EN EL BUSCADOR DE GATOS MANIPULANDO
 //EL VALUE DEL INPUT DESCRIPCIÓN A MANO (NO SABÍAMOS EVENTOS TODAVÍA)
 
-const inputDescription = document.querySelector('.js_in_search_desc');
-const descriptionText = inputDescription.value;
-const card1 = document.querySelector('.js-card-1');
-const card2 = document.querySelector('.js-card-2');
-const card3 = document.querySelector('.js-card-3');
+
+// const card1 = document.querySelector('.js-card-1');
+// const card2 = document.querySelector('.js-card-2');
+// const card3 = document.querySelector('.js-card-3');
 
 // if (descriptionCardOne.includes(descriptionText)) {
 //   card2.classList.add('hidden');
@@ -175,18 +174,35 @@ const card3 = document.querySelector('.js-card-3');
 // }
 
 //AHORA VAMOS A ESTABLECER LOS MISMOS FILTROS PERO YA UTILIZANDO BUCLES
+
+const inputDescription = document.querySelector('.js_in_search_desc');
+
+
 function filterKitten(event) {
   event.preventDefault();
-  list.innerHTML = '';
-  for (const kittenItem of kittenDataList){ 
-  if ( kittenItem.includes(descriptionText)) {
-    list.innerHTML += kittenItem;
-  }
- 
+  const descriptionText = inputDescription.value;
+for (const kitten of kittenDataList) {
+if(kitten.desc.includes(descriptionText)){
+  list.innerHTML = `<li class="card js-card-3">
+  <article>
+    <img
+      class="card_img"
+      src= ${kitten.image}
+      alt="siames-cat"
+    />
+    <h3 class="card_title">${kitten.name}</h3>
+    <h4 class="card_race">${kitten.race}</h4>
+    <p class="card_description">
+      ${kitten.desc}
+    </p>
+  </article>
+  </li>`;
+}else kitten.classList.add('hidden');
 }
-}
-inputDescription.addEventListener('input', filterKitten);
 
+};
+
+inputDescription.addEventListener('input', filterKitten);
 
 //EJERCICIO 4:AÑADIR GATOS DESDE EL FORMULARIO Y DEVOLVER MENSAJE DE ERROR SI
 //FALTA ALGUN CAMPO
