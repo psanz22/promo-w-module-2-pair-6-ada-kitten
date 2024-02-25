@@ -128,23 +128,26 @@ function renderKittenList(kittenDataList) {
 }
 renderKittenList(kittenDataList);
 
-// function renderKitten(object) {
-//   const cardList = `<li class="card js-card-3">
-//   <article>
-//     <img
-//       class="card_img"
-//       src= ${object.image}
-//       alt="siames-cat"
-//     />
-//     <h3 class="card_title">${object.name}</h3>
-//     <h4 class="card_race">${object.race}</h4>
-//     <p class="card_description">
-//       ${object.desc}
-//     </p>
-//   </article>
-//   </li>`;
-//   return cardList;
-// }
+function renderKitten(data) {
+  let race = data.race;
+  if (data.race === undefined) {
+    race = 'Uy no sabemos su raza';
+  }
+  const kitten = `
+ <li class="card">
+ <img
+   class="card_img"
+   src="${data.image}"
+   alt="maine-coon-cat"
+ />
+ <h3 class="card_title">${data.name}</h3>
+ <h4 class="card_race">${race}</h4>
+ <p class="card_description">
+   ${data.desc}
+ </p>
+ </li>`;
+  return kitten;
+}
 
 // list.innerHTML +=
 //   renderKitten(kittenDataList[0]) +
@@ -177,29 +180,16 @@ renderKittenList(kittenDataList);
 
 const inputDescription = document.querySelector('.js_in_search_desc');
 
-
-function filterKitten(event) {
+const filterKitten = (event) => {
   event.preventDefault();
-  const descriptionText = inputDescription.value;
-for (const kitten of kittenDataList) {
-if(kitten.desc.includes(descriptionText)){
-  list.innerHTML = `<li class="card js-card-3">
-  <article>
-    <img
-      class="card_img"
-      src= ${kitten.image}
-      alt="siames-cat"
-    />
-    <h3 class="card_title">${kitten.name}</h3>
-    <h4 class="card_race">${kitten.race}</h4>
-    <p class="card_description">
-      ${kitten.desc}
-    </p>
-  </article>
-  </li>`;
-}else kitten.classList.add('hidden');
-}
+  const searchDesc = inputDescription.value;
+  list.innerHTML = '';
 
+  for (const kittenItem of kittenDataList) {
+     if (kittenItem.desc.includes(searchDesc)){
+      list.innerHTML += renderKitten(kittenItem)
+     }
+  }
 };
 
 inputDescription.addEventListener('input', filterKitten);
